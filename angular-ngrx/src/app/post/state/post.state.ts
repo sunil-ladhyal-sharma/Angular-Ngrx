@@ -8,13 +8,13 @@ export const initialState = {
   post: [
     {
       id: 1,
-      name: 'name 1',
-      description: 'description',
+      name: 'James',
+      description: 'Inscurance agent of Nyc.',
     },
     {
       id: 2,
-      name: 'name 2',
-      description: 'description',
+      name: 'Kevin',
+      description: 'Event Manager.',
     },
   ],
 };

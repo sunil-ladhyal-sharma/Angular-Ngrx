@@ -9,13 +9,15 @@ import { FormsModule } from '@angular/forms';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from 'src/environments/environment.prod';
 import { PostComponent } from './post/post.component';
-import { AppReducer } from './store/app.state';
+import { AppReducer } from './state/app.state';
+import { HeaderComponent } from './shared/header/header.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CounterComponent,
-    PostComponent
+    PostComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,

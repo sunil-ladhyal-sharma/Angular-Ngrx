@@ -1,15 +1,26 @@
-<h1>{{count}}</h1> 
-<h2>{{channelName}}</h2>
 
-<button (click)="counterIncrement()">Increment</button>
-<button (click)="counterDecrement()">decrement</button>
-<button (click)="counterCustomeIncrement()">Custome Increment</button>
-<br>
 
-<input type="text"  [(ngModel)]="value" />
+    <div class="container mt-2">
+        <div class="row ">
+            <div class="col-3 border"><strong>{{channelName}}</strong> </div>
+            <div class="col-3 border"> <button (click)="showChannelName()" class="btn btn-success">Get Channel Name</button></div>
+        </div>
+        <div class="row">
+            <div class="col-3  border"><strong>{{count}}</strong></div>
+            <div class="col-3  border"><button (click)="counterIncrement()" class="btn btn-primary">Increment</button><button (click)="counterDecrement()" class="btn btn-danger">decrement</button></div>
+        </div>
+        <div class="row">
+            <div class="col-3  border"> <input type="text"  [(ngModel)]="value" class="form-control"/></div>
+            <div class="col-3  border"><button (click)="counterCustomeIncrement()" class="btn btn-info">Custome Increment</button></div>
+          
+        </div>
+</div>
+
+
+
+
+
 <!-- just for tag -->
-<br>
 
-<button (click)="showChannelName()">Get Channel Name</button>
 
-<h1>Hello</h1>
+
