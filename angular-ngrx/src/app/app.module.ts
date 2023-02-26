@@ -5,24 +5,27 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { StoreModule } from '@ngrx/store';
 import { CounterComponent } from './counter/counter.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from 'src/environments/environment.prod';
 import { PostComponent } from './post/post.component';
 import { AppReducer } from './state/app.state';
 import { HeaderComponent } from './shared/header/header.component';
+import { AddPostComponent } from './post/add-post/add-post.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CounterComponent,
     PostComponent,
-    HeaderComponent
+    HeaderComponent,
+    AddPostComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    ReactiveFormsModule,
     StoreModule.forRoot(AppReducer),
     StoreDevtoolsModule.instrument({
       // maxAge: 25, // Retains last 25 states

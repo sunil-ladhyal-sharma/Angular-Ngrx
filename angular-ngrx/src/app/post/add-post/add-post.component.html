@@ -1,0 +1,21 @@
+<h3>Add Post</h3>
+<form [formGroup]="addPost" (ngSubmit)="submitPost()">
+  <div class="row">
+    <div class="col-12"><input type="text" placeholder="Add title for Post" class="form-control" formControlName="name"/></div>
+    <div class="col-12 mt-1 text-danger" *ngIf="addPost.get('name')?.touched">
+      <span *ngIf="addPost.get('name')?.hasError('required')">{{'Name is required'}}</span>
+    </div>
+    <div class="col-12 mt-1">
+      <textarea class="form-control"  placeholder="Please write description of the respective post" cols="30" rows="10" formControlName="description"></textarea>
+    </div>
+    <div class="col-12 mt-1 text-danger" *ngIf="addPost.get('description')?.touched">
+      <span *ngIf="addPost.get('description')?.hasError('required')">{{'Description is required'}}</span>
+      <span *ngIf="addPost.get('description')?.hasError('minlength')">{{'Description minimum character must be 10.'}}</span>
+      <span *ngIf="addPost.get('description')?.hasError('maxlength')">{{'Description maximum character must be 100'}}</span>
+    
+    </div>
+    <div class="col-12 mt-1">
+      <button type="submit" class="btn btn-primary" [disabled]="!addPost.valid">Add Post</button>
+    </div>
+  </div>
+</form>
