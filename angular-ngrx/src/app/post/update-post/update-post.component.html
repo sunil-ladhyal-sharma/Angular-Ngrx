@@ -1,5 +1,5 @@
-<h2>Add Post</h2>
-<form [formGroup]="addPost" (ngSubmit)="submitPost()">
+<h2>Update Post</h2>
+<form [formGroup]="addPost" (ngSubmit)="upatedPost()">
   <div class="row">
     <div class="col-12"><input type="text" placeholder="Add title for Post" class="form-control" formControlName="name"/></div>
     <div class="col-12 mt-1 text-danger" *ngIf="addPost.get('name')?.touched">
@@ -15,7 +15,7 @@
     
     </div>
     <div class="col-12 mt-1">
-      <button type="submit" class="btn btn-primary" [disabled]="!addPost.valid">Add Post</button>
+      <button type="submit" class="btn btn-primary" [disabled]="!addPost.valid">Update Post</button>
     </div>
   </div>
 </form>

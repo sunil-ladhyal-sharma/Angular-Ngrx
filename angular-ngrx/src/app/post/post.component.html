@@ -1,12 +1,14 @@
 <div class="row mt-4">
     <div class="col-md-8">
-        <h3>Posts</h3>
+        <button [routerLink]="['add']" class="btn btn-success">Add Post</button>
+        <h2>Posts</h2>
         <table class="table table-striped table-bordered " *ngIf="(posts | async) as postData">
             <thead>
                 <tr>
                     <th>Id</th>
                     <th>Name</th>
                     <th>Description</th>
+                    <th>Action</th>
         
                 </tr>
             </thead>
@@ -15,13 +17,15 @@
                     <td>{{post.id}}</td>
                     <td>{{post.name}}</td>
                     <td>{{post.description}}</td>
+                    <td><button [routerLink]="['edit',post.id]" class="btn btn-warning">Update</button></td>
         
                 </tr>
             </tbody>
         </table>
     </div>
     <div class="col-md-4">
-        <app-add-post></app-add-post>
+        <router-outlet></router-outlet>
+        <!-- <app-add-post></app-add-post> -->
     </div>
 </div>
 

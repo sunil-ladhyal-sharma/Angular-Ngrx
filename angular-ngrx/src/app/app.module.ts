@@ -12,6 +12,8 @@ import { PostComponent } from './post/post.component';
 import { AppReducer } from './state/app.state';
 import { HeaderComponent } from './shared/header/header.component';
 import { AddPostComponent } from './post/add-post/add-post.component';
+import { UpdatePostComponent } from './post/update-post/update-post.component';
+import { StoreRouterConnectingModule } from '@ngrx/router-store';
 
 @NgModule({
   declarations: [
@@ -19,7 +21,8 @@ import { AddPostComponent } from './post/add-post/add-post.component';
     CounterComponent,
     PostComponent,
     HeaderComponent,
-    AddPostComponent
+    AddPostComponent,
+    UpdatePostComponent
   ],
   imports: [
     BrowserModule,
@@ -27,6 +30,7 @@ import { AddPostComponent } from './post/add-post/add-post.component';
     FormsModule,
     ReactiveFormsModule,
     StoreModule.forRoot(AppReducer),
+    // StoreRouterConnectingModule.forRoot(AppReducer),
     StoreDevtoolsModule.instrument({
       // maxAge: 25, // Retains last 25 states
       logOnly: environment.production, // Restrict extension to log-only mode
