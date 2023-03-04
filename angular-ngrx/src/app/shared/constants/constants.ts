@@ -10,6 +10,10 @@ export const ACTION_CONSTANTS = {
   POST_DELETE_ACTION: '[POST PAGE] DELETE POST'
 };
 
+export const FEATURE_NAME_CONSTANTS = {
+  COUNTER_FEATURE_NAME : 'counter',
+  POST_FEATURE_NAME : 'post'
+}
 
 export const TOOLTIPS:any = {
   ADD_POST_TOOTIP : "Add Post",

@@ -4,14 +4,10 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { StoreModule } from '@ngrx/store';
-import { ReactiveFormsModule } from '@angular/forms';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from 'src/environments/environment.prod';
-import { PostComponent } from './post/post.component';
 import { AppReducer } from './state/app.state';
 import { HeaderComponent } from './shared/header/header.component';
-import { AddPostComponent } from './post/add-post/add-post.component';
-import { UpdatePostComponent } from './post/update-post/update-post.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +17,7 @@ import { UpdatePostComponent } from './post/update-post/update-post.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    StoreModule.forRoot(AppReducer),
+    StoreModule.forRoot(),
     // StoreRouterConnectingModule.forRoot(AppReducer),
     StoreDevtoolsModule.instrument({
       // maxAge: 25, // Retains last 25 states
