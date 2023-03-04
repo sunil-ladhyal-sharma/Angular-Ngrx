@@ -10,9 +10,3 @@ import { PostState } from "./post.state";
  export const getPost = createSelector(getPostState, state => {
     return state.post
  });
-
-
- export const getPostById = createSelector(getPostState, selectRouteParams,selectCurrentRoute, state => {
-   console.log(selectCurrentRoute, selectRouteParams)
-   // return state.post.find(itm => itm.id === selectRouteParams?.id)
- })

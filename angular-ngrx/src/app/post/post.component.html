@@ -1,31 +1,53 @@
 <div class="row mt-4">
-    <div class="col-md-8">
-        <button [routerLink]="['add']" class="btn btn-success">Add Post</button>
-        <h2>Posts</h2>
-        <table class="table table-striped table-bordered " *ngIf="(posts | async) as postData">
-            <thead>
-                <tr>
-                    <th>Id</th>
-                    <th>Name</th>
-                    <th>Description</th>
-                    <th>Action</th>
-        
-                </tr>
-            </thead>
-            <tbody>
-                <tr  *ngFor="let post of postData">
-                    <td>{{post.id}}</td>
-                    <td>{{post.name}}</td>
-                    <td>{{post.description}}</td>
-                    <td><button [routerLink]="['edit',post.id]" class="btn btn-warning">Update</button></td>
-        
-                </tr>
-            </tbody>
-        </table>
+  <div class="col-md-8">
+    <!-- <i class="fa-solid fa-plus icon-styles" [routerLink]="['add']" title="Add Post"></i> -->
+    <!-- <button [routerLink]="['add']" class="btn btn-success">Add Post</button> -->
+    <div class="d-flex flex-row">
+      <h2 class="d-flex align-content-end flex-wrap">
+        Posts&nbsp;<i
+          class="fa-solid fa-plus icon-styles"
+          [routerLink]="['add']"
+          [title]="toolTips?.ADD_POST_TOOTIP"
+        ></i>
+      </h2>
+      &nbsp;
     </div>
-    <div class="col-md-4">
-        <router-outlet></router-outlet>
-        <!-- <app-add-post></app-add-post> -->
-    </div>
+    <table
+      class="table table-striped table-bordered"
+      *ngIf="posts | async as postData"
+    >
+      <thead>
+        <tr>
+          <th>Id</th>
+          <th>Name</th>
+          <th>Description</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let post of postData">
+          <td>{{ post.id }}</td>
+          <td>{{ post.name }}</td>
+          <td>{{ post.description }}</td>
+          <td>
+            <i
+              class="fa-solid fa-pen-nib icon-styles"
+              [routerLink]="['edit', post.id]"
+              [title]="toolTips?.UPDATE_POST_TOOTIP"
+            ></i
+            >&nbsp;
+            <i
+              class="fa-solid fa-trash icon-styles"
+              [title]="toolTips?.DELETE_POST_TOOTIP"
+              (click)="deletePost(post.id)"
+            ></i>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="col-md-4">
+    <router-outlet></router-outlet>
+    <!-- <app-add-post></app-add-post> -->
+  </div>
 </div>
-

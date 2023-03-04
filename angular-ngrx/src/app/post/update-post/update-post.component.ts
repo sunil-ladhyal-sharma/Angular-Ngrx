@@ -7,12 +7,10 @@ import {
 } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { Observable } from 'rxjs';
 import { Post } from 'src/app/shared/models/post.model';
 import { AppState } from 'src/app/state/app.state';
 import { UPDATE_POST_ACTION } from '../state/post.actions';
-import { getPost, getPostById } from '../state/post.selector';
-import { PostState } from '../state/post.state';
+import { getPost } from '../state/post.selector';
 
 @Component({
   selector: 'app-update-post',
@@ -22,7 +20,7 @@ import { PostState } from '../state/post.state';
 export class UpdatePostComponent implements OnInit {
   addPost!: FormGroup;
   getPost?: Post;
-  id:any
+  id: any;
 
   constructor(
     private fb: FormBuilder,
@@ -48,17 +46,16 @@ export class UpdatePostComponent implements OnInit {
   }
 
   upatedPost() {
-
-    if(this.addPost.invalid) {
-      return
+    if (this.addPost.invalid) {
+      return;
     }
 
-    const post:Post = {
-      id :  parseInt(this.id),
+    const post: Post = {
+      id: parseInt(this.id),
       name: this.addPost.value.name,
-      description : this.addPost.value.description  
-    }
+      description: this.addPost.value.description,
+    };
     console.log(this.addPost.value);
-    this.store.dispatch(UPDATE_POST_ACTION({post}))
+    this.store.dispatch(UPDATE_POST_ACTION({ post }));
   }
 }
