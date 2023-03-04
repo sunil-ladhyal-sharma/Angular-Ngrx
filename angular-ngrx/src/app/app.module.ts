@@ -4,8 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { StoreModule } from '@ngrx/store';
-import { CounterComponent } from './counter/counter.component';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from 'src/environments/environment.prod';
 import { PostComponent } from './post/post.component';
@@ -13,22 +12,15 @@ import { AppReducer } from './state/app.state';
 import { HeaderComponent } from './shared/header/header.component';
 import { AddPostComponent } from './post/add-post/add-post.component';
 import { UpdatePostComponent } from './post/update-post/update-post.component';
-import { StoreRouterConnectingModule } from '@ngrx/router-store';
 
 @NgModule({
   declarations: [
     AppComponent,
-    CounterComponent,
-    PostComponent,
-    HeaderComponent,
-    AddPostComponent,
-    UpdatePostComponent
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule,
-    ReactiveFormsModule,
     StoreModule.forRoot(AppReducer),
     // StoreRouterConnectingModule.forRoot(AppReducer),
     StoreDevtoolsModule.instrument({
