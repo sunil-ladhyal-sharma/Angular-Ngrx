@@ -1,0 +1,57 @@
+<div class="row login-form-row align-items-center">
+  <div class="col-md-6 col-sm-10 offset-md-3 offset-sm-2">
+    <form
+      [formGroup]="loginFormGroup"
+      (ngSubmit)="loginFormSubmit()"
+      class="login-form"
+    >
+      <div class="mb-3"><label class="label-style">Login Form</label></div>
+      <div class="mb-3">
+        <input
+          type="text"
+          class="form-control"
+          formControlName="username"
+          placeholder="Username/Email"
+        />
+        <div
+          class="text-danger"
+          *ngIf="loginFormGroup.get('username')?.touched"
+        >
+          <span *ngIf="loginFormGroup.get('username')?.hasError('required')"
+            >Username/email {{errorConstants?.REQUIRED}}</span
+          >
+          <span *ngIf="loginFormGroup.get('username')?.hasError('email')"
+            >Username/email {{errorConstants?.VALID}}</span
+          >
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <input
+          type="password"
+          class="form-control"
+          formControlName="password"
+          placeholder="Password"
+        />
+        <div
+          class="text-danger"
+          *ngIf="loginFormGroup.get('password')?.touched"
+        >
+          <span *ngIf="loginFormGroup.get('password')?.hasError('required')"
+            >Password {{errorConstants?.REQUIRED}}</span
+          >
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <button
+          type="submit"
+          class="btn btn-dark"
+          [disabled]="loginFormGroup.invalid"
+        >
+          Login
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

@@ -26,3 +26,18 @@
     border-top-right-radius: 30px;
     border-bottom-left-radius: 29px;
 }
+
+.login-form-row {
+    min-height: 100vh;
+}
+
+.label-style {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.login-form {
+    padding: 10px;
+    border: solid 1px gray;
+    border-radius: 5px;
+}

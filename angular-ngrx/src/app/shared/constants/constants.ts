@@ -10,11 +10,13 @@ export const ACTION_CONSTANTS = {
   POST_DELETE_ACTION: '[POST PAGE] DELETE POST'
 };
 
+// For Feature Name for Store
 export const FEATURE_NAME_CONSTANTS = {
   COUNTER_FEATURE_NAME : 'counter',
   POST_FEATURE_NAME : 'post'
 }
 
+// Appliation Tooltips
 export const TOOLTIPS:any = {
   ADD_POST_TOOTIP : "Add Post",
   DELETE_POST_TOOTIP : "Delete Post",
@@ -23,4 +25,17 @@ export const TOOLTIPS:any = {
   DELETE_FORM_TTILE : "Delete Post",
   UPDATE_FORM_TTILE : "Update Post"
 
+}
+
+// Application Lables
+export const LABELES = {
+  
+}
+
+// Application default Error Message 
+export const ERRORS = {
+REQUIRED : " is required",
+VALID : " is valid",
+MINLENGTH : " minimum character must be ",
+MAXLENGTH : " maximum character msut be "
 }
