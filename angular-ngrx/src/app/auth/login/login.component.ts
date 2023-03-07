@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormControl,FormGroup, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { ERRORS } from 'src/app/shared/constants/constants';
+import { setSpinnerStatus } from 'src/app/shared/state/shared.action';
 import { AppState } from 'src/app/state/app.state';
 import { loginStart } from '../state/auth.action';
 
@@ -26,6 +27,8 @@ export class LoginComponent {
     console.log("login form" , this.loginFormGroup);
     const username = this.loginFormGroup.value.username;
     const password = this.loginFormGroup.value.password;
-    this.store.dispatch(loginStart({username, password}))
+    this.store.dispatch(setSpinnerStatus({spinnerStatus : true}));
+    this.store.dispatch(loginStart({username, password}));
+   
   }
 }

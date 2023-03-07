@@ -10,18 +10,20 @@ import { AppReducer } from './state/app.state';
 import { HeaderComponent } from './shared/header/header.component';
 import { EffectsModule } from '@ngrx/effects';
 import { HttpClientModule } from '@angular/common/http';
+import { SpinnerComponent } from './shared/spinner/spinner.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent
+    HeaderComponent,
+    SpinnerComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     EffectsModule.forRoot([]),
-    StoreModule.forRoot({}),
+    StoreModule.forRoot(AppReducer),
     // StoreRouterConnectingModule.forRoot(AppReducer),
     StoreDevtoolsModule.instrument({
       // maxAge: 25, // Retains last 25 states
