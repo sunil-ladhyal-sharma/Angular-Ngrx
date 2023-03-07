@@ -8,6 +8,8 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from 'src/environments/environment.prod';
 import { AppReducer } from './state/app.state';
 import { HeaderComponent } from './shared/header/header.component';
+import { EffectsModule } from '@ngrx/effects';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -17,7 +19,9 @@ import { HeaderComponent } from './shared/header/header.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    StoreModule.forRoot(),
+    HttpClientModule,
+    EffectsModule.forRoot([]),
+    StoreModule.forRoot({}),
     // StoreRouterConnectingModule.forRoot(AppReducer),
     StoreDevtoolsModule.instrument({
       // maxAge: 25, // Retains last 25 states

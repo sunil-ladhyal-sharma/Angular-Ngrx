@@ -1,3 +1,4 @@
+import { authReducer } from "../auth/state/auth.reducer";
 import { counterReducer } from "../counter/state/counter.reducer";
 import { counterState } from "../counter/state/counter.state";
 import { postReducer } from "../post/state/post.reducer";
@@ -10,5 +11,5 @@ export interface AppState {
 
 export const AppReducer  = {
 counter : counterReducer,
-post : postReducer
+post : postReducer,
 }

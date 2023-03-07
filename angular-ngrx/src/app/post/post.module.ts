@@ -28,6 +28,14 @@ const routes: Routes = [
 
 @NgModule({
   declarations: [PostComponent, AddPostComponent, UpdatePostComponent],
-  imports: [RouterModule.forChild(routes), ReactiveFormsModule, CommonModule, StoreModule.forFeature(FEATURE_NAME_CONSTANTS.POST_FEATURE_NAME, postReducer)],
+  imports: [
+    RouterModule.forChild(routes),
+    ReactiveFormsModule,
+    CommonModule,
+    StoreModule.forFeature(
+      FEATURE_NAME_CONSTANTS.POST_FEATURE_NAME,
+      postReducer
+    ),
+  ],
 })
 export class PostModule {}
