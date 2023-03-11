@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { getSpinnerStatus } from './shared/state/shared.selector';
+import { getErrorStatus, getSpinnerStatus } from './shared/state/shared.selector';
+import { customError } from './shared/state/shared.state';
 import { AppState } from './state/app.state';
 
 @Component({
@@ -12,9 +13,13 @@ import { AppState } from './state/app.state';
 export class AppComponent implements OnInit{
   title = 'angular-ngrx';
   shouldSpinnerShow?:Observable<boolean>
+  customError ? :customError
   constructor(private store : Store<AppState>) {
    
     this.shouldSpinnerShow =  this.store.select(getSpinnerStatus)
+      this.store.select(getErrorStatus).subscribe(res => {
+        this.customError = res;
+      });
   }
 
   ngOnInit(): void {

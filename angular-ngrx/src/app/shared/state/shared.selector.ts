@@ -7,3 +7,7 @@ export const getSharedState = createFeatureSelector<sharedState>(FEATURE_NAME_CO
 export const getSpinnerStatus = createSelector(getSharedState,state => {
         return state.spinnerStatus;
 })
+
+export const getErrorStatus = createSelector(getSharedState, state => {
+        return state.error;
+})

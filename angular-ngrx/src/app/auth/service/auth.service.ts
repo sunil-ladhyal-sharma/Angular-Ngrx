@@ -21,4 +21,13 @@ export class AuthService {
     formatedUser(user:any) {
            return new User(user.username, user.token, user.expiryTime)
     }
+
+    formatedError(error:string) {
+        switch(error) {
+            case 'EMAIL_NOT_FOUND' : 
+            return 'Email Not Found.'
+
+            default : return error
+        }
+    }
 }

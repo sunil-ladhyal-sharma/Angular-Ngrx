@@ -1,6 +1,6 @@
 import { createReducer, on } from "@ngrx/store"
-import { setSpinnerStatus } from "./shared.action"
-import { initialState, sharedState } from "./shared.state"
+import { setErrorStatus, setSpinnerStatus } from "./shared.action"
+import { customError, initialState, sharedState } from "./shared.state"
 
 export const _sharedReducer = createReducer(initialState,
     on(setSpinnerStatus,(state, action) => {
@@ -11,6 +11,14 @@ export const _sharedReducer = createReducer(initialState,
             spinnerStatus : action.spinnerStatus
         }
     })
+,
+
+on(setErrorStatus,(state,action) => {
+  return{
+    ...state,
+    error : action.error
+  }
+})
     )
 export function sharedReducer(state:any, action:any) {
     return _sharedReducer(state, action)

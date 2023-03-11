@@ -1,9 +1,10 @@
 import { Injectable } from "@angular/core";
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Store } from "@ngrx/store";
-import { exhaustMap, map, Observable } from "rxjs";
+import { catchError, exhaustMap, map, Observable, of } from "rxjs";
 import { AuthLoginModel } from "src/app/shared/models/authLogin.model";
-import { setSpinnerStatus } from "src/app/shared/state/shared.action";
+import { setErrorStatus, setSpinnerStatus } from "src/app/shared/state/shared.action";
+import { customError } from "src/app/shared/state/shared.state";
 import { AppState } from "src/app/state/app.state";
 import { AuthService } from "../service/auth.service";
 import { loginStart, loginSuccess } from "./auth.action";
@@ -12,6 +13,7 @@ import { loginStart, loginSuccess } from "./auth.action";
     providedIn:'root'
 })
 export class AuthEffect {
+  formatedError!:customError;
     constructor(private action$: Actions, private auth : AuthService, private store : Store<AppState>) {
 
     }
@@ -40,9 +42,19 @@ export class AuthEffect {
                 const formatedUser = this.auth.formatedUser(user)
                 /* Sending the Formated User to the login sucess action. So that we can store it into the ngrx store. */
                 this.store.dispatch(setSpinnerStatus({spinnerStatus:false}));
+                this.formatedError = {showError : false, errorMessage: ''}
+                this.store.dispatch(setErrorStatus({error:this.formatedError}))
                 return loginSuccess({user:formatedUser});
 
 
+            }),
+            catchError((err) => {
+              console.log(err)
+              // const formatedError:customError = {showError : true, errorMessage: ''};
+              this.formatedError =  {showError : true, errorMessage: ''};
+              this.formatedError.errorMessage =  this.auth.formatedError(err.error);
+              this.store.dispatch(setSpinnerStatus({spinnerStatus:false}));
+              return of(this.store.dispatch(setErrorStatus({error:this.formatedError})));
             })
         )
       })
