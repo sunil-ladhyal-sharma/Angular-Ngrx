@@ -1,9 +1,14 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { HomeComponent } from './home/home.component';
 
 const routes: Routes = [
   {
-    path: '',
+    path:'',
+    component : HomeComponent
+  },
+  {
+    path: 'counter',
     loadChildren: () =>
       import('./counter/counter.module').then((m) => m.CounterModule),
   },

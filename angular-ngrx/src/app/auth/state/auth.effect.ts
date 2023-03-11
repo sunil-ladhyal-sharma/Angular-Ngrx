@@ -1,7 +1,8 @@
 import { Injectable } from "@angular/core";
+import { Router } from "@angular/router";
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Store } from "@ngrx/store";
-import { catchError, exhaustMap, map, Observable, of } from "rxjs";
+import { catchError, exhaustMap, map, Observable, of, tap } from "rxjs";
 import { AuthLoginModel } from "src/app/shared/models/authLogin.model";
 import { setErrorStatus, setSpinnerStatus } from "src/app/shared/state/shared.action";
 import { customError } from "src/app/shared/state/shared.state";
@@ -14,7 +15,8 @@ import { loginStart, loginSuccess } from "./auth.action";
 })
 export class AuthEffect {
   formatedError!:customError;
-    constructor(private action$: Actions, private auth : AuthService, private store : Store<AppState>) {
+    constructor(private action$: Actions, private auth : AuthService, private store : Store<AppState>,
+      private router: Router) {
 
     }
 
@@ -60,4 +62,17 @@ export class AuthEffect {
       })
     );
   });
+
+  /* After Login Success redirect it to home page */
+   loginRedirect$ = createEffect(() => {
+      return this.action$.pipe(
+        ofType(loginSuccess),
+        tap((action) => {
+          // console.log(action);
+          this.router.navigate(['/'])
+        })
+      )
+   },
+   {dispatch:false}
+   )
 }

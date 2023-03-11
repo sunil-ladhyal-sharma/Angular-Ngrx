@@ -6,20 +6,29 @@
   
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
-        <li class="nav-item active">
-          <i class="fa-solid fa-calculator header-icon-styles text-uppercase" [routerLink]="['/']">Counter</i>
+        <li class="nav-item active" *ngIf="authenticated | async">
+          <i class="fa-solid fa-chart-line header-icon-styles text-uppercase" [routerLink]="['/']">Home</i>
           <!-- <a class="nav-link" [routerLink]="['/']" >Counter</a> -->
         </li>
-        <li class="nav-item">
+        <li class="nav-item active" *ngIf="authenticated | async">
+          <i class="fa-solid fa-calculator header-icon-styles text-uppercase" [routerLink]="['/counter']">Counter</i>
+          <!-- <a class="nav-link" [routerLink]="['/']" >Counter</a> -->
+        </li>
+        <li class="nav-item" *ngIf="authenticated | async">
           <i class="fa-brands fa-usps header-icon-styles text-uppercase" [routerLink]="['/post']">Posts</i>
           <!-- <a class="nav-link" [routerLink]="['/post']" >Posts</a> -->
         </li>
-        <li class="nav-item">
-          <i class="fa-brands fa-usps header-icon-styles text-uppercase" [routerLink]="['/auth/login']">Login</i>
+        <li class="nav-item " *ngIf="!(authenticated | async)">
+          <i class="fa-solid fa-user header-icon-styles text-uppercase" [routerLink]="['/auth/login']">Login</i>
           <!-- <a class="nav-link" [routerLink]="['/post']" >Posts</a> -->
         </li>
-        <li class="nav-item">
-          <i class="fa-brands fa-usps header-icon-styles text-uppercase" [routerLink]="['/auth/signup']">Sign Up</i>
+        <li class="nav-item" *ngIf="!(authenticated | async)">
+          <i class="fa-solid fa-user-plus header-icon-styles text-uppercase" [routerLink]="['/auth/signup']">Sign Up</i>
+          <!-- <a class="nav-link" [routerLink]="['/post']" >Posts</a> -->
+        </li>
+
+        <li class="nav-item" *ngIf="authenticated | async">
+          <i class="fa-solid fa-right-from-bracket header-icon-styles text-uppercase" [routerLink]="['/auth/signup']">Logout</i>
           <!-- <a class="nav-link" [routerLink]="['/post']" >Posts</a> -->
         </li>
 

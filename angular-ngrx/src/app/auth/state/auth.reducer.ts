@@ -1,5 +1,6 @@
 import { createReducer, on } from "@ngrx/store";
 import { Action } from "rxjs/internal/scheduler/Action";
+import { AuthLoginModel } from "src/app/shared/models/authLogin.model";
 import { loginStart, loginSuccess } from "./auth.action";
 import { initialState } from "./auth.state";
 
@@ -14,10 +15,8 @@ export  const _authReducer = createReducer(
    }),
 
    on(loginSuccess, (state, action) => {
-    
-    
    return { ...state,
-   user : action.user
+   user : action
    }
    })
 );

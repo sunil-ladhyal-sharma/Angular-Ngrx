@@ -26,7 +26,6 @@ export const FEATURE_NAME_CONSTANTS = {
   POST_FEATURE_NAME : 'post',
   AUTH_FEATURE_NAME : 'auth',
   SHARED_FEATURE_NAME : 'shared'
-
 }
 
 // Appliation Tooltips

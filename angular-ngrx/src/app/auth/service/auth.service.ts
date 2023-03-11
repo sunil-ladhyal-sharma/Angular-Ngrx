@@ -18,7 +18,7 @@ export class AuthService {
         return this.http.post<AuthLoginModel>(url, {username, password})
     }
 
-    formatedUser(user:any) {
+    formatedUser(user:AuthLoginModel) {
            return new User(user.username, user.token, user.expiryTime)
     }
 

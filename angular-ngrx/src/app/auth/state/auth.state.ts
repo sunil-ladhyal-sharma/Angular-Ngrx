@@ -1,3 +1,15 @@
-export interface AuthState  {}
 
-export const initialState:AuthState = {}
+
+export interface AuthState  {
+   user : {}
+}
+
+export const initialState:AuthState = {
+
+   user : {
+    username : '',
+    token : '',
+    expiryTime : ''
+   }
+
+}
